@@ -1,0 +1,17 @@
+<head>
+  <title>BookersVer2</title>
+</head>
+<main>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <h2>User info</h2>
+    <img class="attachment user profile_image fallback" src="/assets/no_image-ede28af4bad96368ef41be1b4be1cffce0d9402540f75d17895e32cb0d2af5e6.jpg">
+    <h3 class="profile-name"><%= @user.name %></h3>
+    <%= image_tag('sample-author1.jpg') %>
+    <% if @user.id == current_user.id %>
+    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+    <% end %>
+  </div>
+<% @post_images.each do |post_image| %>
+</div>
+</main>
