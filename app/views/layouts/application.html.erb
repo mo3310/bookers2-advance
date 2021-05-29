@@ -19,22 +19,47 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <%= link_to "Homes", root_path %>
-            </li>
             <% if user_signed_in? %>
-            <li class="nav-item">
-              <%= link_to "Books", books_path %>
+            <li style="padding-right: 15px;">
+              <%= link_to user_path(current_user) do %>
+              <i class="fas fa-home", style="color: white;"> Home</i>
+              <% end %>
             </li>
-            <li class="nav-item">
-              <%= link_to "logout", destroy_user_session_path, method: :delete %>
+            <li style="padding-right: 15px;">
+              <%= link_to users_path do %>
+              <i class="fas fa-users", style="color: white;"> Users</i>
+              <% end %>
+            </li>
+            <li style="padding-right: 15px;">
+              <%= link_to books_path do %>
+              <i class="fas fa-book-open", style="color: white;"> Books</i>
+              <% end %>
+            </li>
+            <li style="padding-right: 15px;">
+              <%= link_to destroy_user_session_path, method: :delete do %>
+              <i class="fas fa-sign-out-alt", style="color: white;"> logout</i>
+              <% end %>
             </li>
             <% else %>
-            <li>
-              <%= link_to "sign up", new_user_registration_path %>
+            <li style="padding-right: 15px;">
+              <%= link_to root_path do %>
+              <i class="fas fa-home", style="color: white;"> Home</i>
+              <% end %>
             </li>
-            <li>
-              <%= link_to "login", new_user_session_path %>
+            <li style="padding-right: 15px;">
+              <%= link_to about_path do %>
+              <i class="fas fa-link", style="color: white;"> about</i>
+              <% end %>
+            </li>
+            <li style="padding-right: 15px;">
+              <%= link_to new_user_registration_path do %>
+              <i class="fas fa-user-plus", style="color: white;"> sign up</i>
+              <% end %>
+            </li>
+            <li style="padding-right: 15px;">
+              <%= link_to new_user_session_path do %>
+              <i class="fas fa-sign-in-alt", style="color: white;"> login</i>
+              <% end %>
             </li>
             <% end %>
             </ul>
@@ -42,9 +67,13 @@
         </div>
       </nav>
     </header>
+
+    <div class="container px-5 px-sm-0">
+    <div class="success", style="color: green;"><%= flash[:success] %></div>
     <main class="mb-auto">
       <%= yield %>
     </main>
+    </div>
   <footer>
   <div class="container mt-5">
   	<div class="row">
