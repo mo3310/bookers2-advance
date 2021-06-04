@@ -13,15 +13,25 @@
           <th><%= link_to @book_show.title %></th>
           <th><%= @book_show.body %></th>
           <th><% if @user == current_user %>
-              <%= link_to edit_user_path(@book_show) do %>
-              <button class="btn btn-sm btn-success" >Edit</button>
-              <% end %>
+            <%= link_to edit_user_path(@book_show) do %>
+            <button class="btn btn-sm btn-success" >Edit</button>
+            <% end %>
           </th>
           <th><%= link_to "Destroy", book_path(@book_show), class:"btn btn-sm btn-danger", method: :delete, data: {confirm: "本当に削除しますか？"} %></th>
             <% else %>
           <th></th>
           <th></th>
             <% end %>
+          <th><% if @book_show.favorited_by?(current_user) %>
+            <%= link_to book_favorites_path(@book_show), method: :delete do %>
+            <div style="color: #e95464;">♥<%= @book_show.favorites.count %></div>
+            <% end %>
+            <% else %>
+            <%= link_to book_favorites_path(@book_show), method: :post do %>
+            <div style="color: #2ca9e1;">♥<%= @book_show.favorites.count %></div>
+            <% end %>
+            <% end %>
+          </th>
           <th>コメント数：<%= @book_show.book_comments.count %></th>
         </tr>
       </tbody>
