@@ -67,21 +67,19 @@
         </div>
       </nav>
     </header>
-
+    <center><%= render 'searches/search' %></center>
     <div class="container px-5 px-sm-0">
-    <div class="success", style="color: green;"><%= flash[:success] %></div>
-    <main class="mb-auto">
-      <%= yield %>
-    </main>
+      <div class="success", style="color: green;"><%= flash[:success] %></div>
+        <%= yield %>
     </div>
+  </body>
   <footer>
-  <div class="container mt-5">
-  	<div class="row">
-    	<div class="mx-auto">
-    		<p>CopyRight Infratop.inc</p>
-    	</div>
+    <div class="container mt-5">
+  	  <div class="row">
+    	  <div class="mx-auto">
+    		  <p>CopyRight Infratop.inc</p>
+    	  </div>
+      </div>
     </div>
-  </div>
-</footer>
-</body>
+  </footer>
 </html>

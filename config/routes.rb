@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   root 'homes#top'
   get "home/about" => "homes#about" , as: "about"
+  get "search" => "searches#search"
   devise_for :users
 
   resources :users, only: [:index, :show, :edit, :update] do
